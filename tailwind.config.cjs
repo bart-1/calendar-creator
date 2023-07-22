@@ -3,6 +3,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      aspectRatio: {
+'a4': "1 / 1.414"
+      },
       colors: {
         mygray: {
           darker: "rgb(30,30,30)",
