@@ -1,6 +1,9 @@
-
 export type LangPrefix = "pl" | "en";
 export type LangDictionary = { [key in LangPrefix]: string[] };
+export interface LangContextProps {
+  lang: LangPrefix;
+  setLang: (lang:LangPrefix) => void;
+}
 
 export const months: LangDictionary = {
   pl: [
@@ -11,6 +14,7 @@ export const months: LangDictionary = {
     "Kwiecień",
     "Maj",
     "Czerwiec",
+    "Lipiec",
     "Sierpień",
     "Wrzesień",
     "Październik",
