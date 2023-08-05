@@ -1,15 +1,16 @@
-import { LangPrefix, months } from "../models/dictionary";
+import { months } from "../models/dictionary";
 import Sheet from "../components/Sheet";
-import { useOutletContext, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useLanguageStore } from "../stores/LangStore";
 
 interface PageProps {
   pageID: number;
 }
 
 const Page = () => {
-  const { lang } = useOutletContext<{ [key: string]: LangPrefix }>();
+  const lang = useLanguageStore((state) => state.lang);
   const { id } = useParams();
-    const page = months[lang][Number(id)]
+  const page = months[lang][Number(id)];
   return (
     <>
       <div className="text-center text-black" id="page">

@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { LangPrefix, months } from "../models/dictionary";
-import useLang from "../context/LangContext";
+import { months } from "../models/dictionary";
 import { Link } from "react-router-dom";
 import LangButton from "./LangButton";
+import { useLanguageStore } from "../stores/LangStore";
 
-interface SideMenuProps {
-  action: (lang: LangPrefix) => void;
-  lang: LangPrefix;
-}
 
-function SideMenu({action, lang}:SideMenuProps) {
+function SideMenu() {
   const [menuOpen, setMenuOpen] = useState(false); 
+
+  const lang = useLanguageStore(state => state.lang)
+  const setLang = useLanguageStore(state => state.setLang)
 
   const pages = months[lang].map((page, key) => (
     <Link to={`page/${key}`} key={page}>
@@ -38,8 +37,8 @@ function SideMenu({action, lang}:SideMenuProps) {
         </button>
         <div className="flex gap-2">
          
-          <LangButton action={(lang) => action(lang)} title="pl" lang={lang} />
-          <LangButton action={(lang) => action(lang)} title="en" lang={lang} />
+          <LangButton action={(lang) => setLang(lang)} title="pl" lang={lang} />
+          <LangButton action={(lang) => setLang(lang)} title="en" lang={lang} />
         </div>
         {pages}
       </div>

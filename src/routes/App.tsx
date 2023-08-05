@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import SideMenu from "../components/SideMenu";
-import useLang from "../context/LangContext";
+import { useLanguageStore } from "../stores/LangStore";
 
 function App() {
-  const [lang, setLang] = useLang();
+  const lang = useLanguageStore((state) => state.lang);
   return (
     <>
       <div className="w-screen h-screen p-0">
-        <SideMenu lang={lang} action={(lang) => setLang(lang)} />
+        <SideMenu />
         <Outlet context={{ lang }} />;
       </div>
     </>
