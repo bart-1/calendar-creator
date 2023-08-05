@@ -1,5 +1,6 @@
 export type LangPrefix = "pl" | "en";
 export type LangDictionary = { [key in LangPrefix]: string[] };
+
 export interface LangContextProps {
   lang: LangPrefix;
   setLang: (lang:LangPrefix) => void;
