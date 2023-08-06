@@ -17,7 +17,7 @@ const Page = () => {
         {" "}
         strona: {page} - {lang}
       </div>
-      <Sheet />
+      <Sheet id={id ? id : ""}/>
     </>
   );
 };
